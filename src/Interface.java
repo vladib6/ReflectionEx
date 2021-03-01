@@ -1,4 +1,4 @@
-public interface Interface {
+public class Interface {
 
-    public void print();
+    int a;
 }

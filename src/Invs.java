@@ -8,12 +8,16 @@ public class Invs implements Investigator {
 
 
         private Class cls;
-        public Invs(){//TODO
+        public Invs(){
             cls=null;
         }
 
+        public Class GetClass(){
+            return cls;
+        }
+
         @Override
-        public void load(Object anInstanceOfSomething) {//TODO
+        public void load(Object anInstanceOfSomething) {
             this.cls = anInstanceOfSomething.getClass();
         }
 
@@ -47,7 +51,7 @@ public class Invs implements Investigator {
          }
 
         @Override
-        public int getCountOfConstantFields() {//TODO
+        public int getCountOfConstantFields() {
             int count=0;
             Field[] fields=cls.getDeclaredFields();
             for(Field field: fields){
@@ -59,7 +63,7 @@ public class Invs implements Investigator {
         }
 
         @Override
-        public int getCountOfStaticMethods() {//TODO
+        public int getCountOfStaticMethods() {
            int count=0;
            Method[] methods=cls.getDeclaredMethods();
            for(Method method:methods){
@@ -67,18 +71,27 @@ public class Invs implements Investigator {
                    count++;
                }
            }
-
             return count;
         }
 
         @Override
-        public boolean isExtending() {//TODO
-            return false;
+        public boolean isExtending() {
+             Class<?> res=cls.getSuperclass();
+
+             if(res.equals(Object.class)){
+                 return false;
+             }else{
+                 return true;
+             }
         }
 
         @Override
-        public String getParentClassSimpleName() {//TODO
-            return null;
+        public String getParentClassSimpleName() {
+            if(isExtending()){
+                 return cls.getSuperclass().getName();
+            }else{
+                return null;
+            }
         }
 
         @Override
