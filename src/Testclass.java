@@ -4,11 +4,18 @@ public class Testclass extends Interface {
    int a ,b;
    String string1, string2;
    final int d=2;
-
     public void print() {
         System.out.println("Interface");
     }
+
+    @Override
+    public String getstring() {
+        return "Null";
+    }
+
     public static int get(){
         return 1000;
     }
+
+
 }
