@@ -18,4 +18,6 @@ Data like:
 To start using , first create a instance if a class, and then call the method load with the object you want to investigate as a argument.
 
 
+**Note: Invs.java implement reflection.api.Investigator.java  but you can use him without that by delete the implement declaration
+
 Enjoy!
