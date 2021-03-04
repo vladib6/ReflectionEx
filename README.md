@@ -2,6 +2,7 @@
 
 The class Invs.java are investigate Objects,
 by inkove his methods you can get data about any object.
+
 :eyeglasses:
 Data like: 
 * Name of class.
