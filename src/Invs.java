@@ -104,17 +104,17 @@ public class Invs implements Investigator {
         }
 
         @Override
-        public Set<String> getNamesOfAllFieldsIncludingInheritanceChain() {//TODO:ask how refer to situation that in class and supercalss has fields with the same name
+      public Set<String> getNamesOfAllFieldsIncludingInheritanceChain() {
             Set<String> res=new HashSet<>();
+            Class<?> clazz=obj.getClass();
+            do {
+                Field[]fields=clazz.getDeclaredFields();
+                for(Field field:fields){
+                    res.add(field.getName());
+                }
+                clazz=clazz.getSuperclass();
+            }while (!(clazz.equals(Object.class)));
 
-            Field[] fields=obj.getClass().getDeclaredFields();
-            Field[] inheritanceFields=obj.getClass().getSuperclass().getDeclaredFields();
-            for(Field field:fields){
-                res.add(field.getName());
-            }
-            for(Field field : inheritanceFields){
-                res.add(field.getName());
-            }
             return res;
         }
 
